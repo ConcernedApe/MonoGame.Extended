@@ -108,10 +108,10 @@ namespace MonoGame.Extended.Tiled
 
         public TiledMapTileset GetTilesetByTileGlobalIdentifier(int tileIdentifier)
         {
-			foreach (var tileset in _firstGlobalIdentifiers)
-			{
-			    if (tileIdentifier >= tileset.Item2 && tileIdentifier < tileset.Item2 + tileset.Item1.TileCount)
-			        return tileset.Item1;
+			for(int i = 0; i < _firstGlobalIdentifiers.Count; i++)
+            { 
+			    if (tileIdentifier >= _firstGlobalIdentifiers[i].Item2 && tileIdentifier < _firstGlobalIdentifiers[i].Item2 + _firstGlobalIdentifiers[i].Item1.TileCount)
+			        return _firstGlobalIdentifiers[i].Item1;
 			}
 
             return null;
@@ -119,7 +119,12 @@ namespace MonoGame.Extended.Tiled
 
 		public int GetTilesetFirstGlobalIdentifier(TiledMapTileset tileset)
 		{
-			return _firstGlobalIdentifiers.FirstOrDefault(t => t.Item1 == tileset).Item2;
+            for (int i = 0; i < _firstGlobalIdentifiers.Count; i++)
+            {
+                if (_firstGlobalIdentifiers[i].Item1.Equals(tileset)) return _firstGlobalIdentifiers[i].Item2;
+            }
+            return 0;
+			//return _firstGlobalIdentifiers.FirstOrDefault(t => t.Item1 == tileset).Item2;
 		}
 
 		private static int CountLayers(TiledMapLayer layer)

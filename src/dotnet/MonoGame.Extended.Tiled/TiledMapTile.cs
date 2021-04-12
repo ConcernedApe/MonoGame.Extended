@@ -20,6 +20,15 @@
             Y = y;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is TiledMapTile tile && tile.X == X && tile.Y == Y; 
+        }
+
+        public override int GetHashCode()
+        {
+            return X * 9999 + Y;
+        }
         public override string ToString()
         {
             return $"GlobalIdentifier: {GlobalIdentifier}, Flags: {Flags}";

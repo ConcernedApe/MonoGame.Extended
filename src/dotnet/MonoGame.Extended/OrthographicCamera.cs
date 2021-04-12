@@ -27,7 +27,19 @@ namespace MonoGame.Extended
             Position = Vector2.Zero;
         }
 
-        public override Vector2 Position { get; set; }
+        Vector2 _position;
+        public override Vector2 Position
+        {
+            get => _position;
+            set
+            {
+                if (!_position.Equals(value))
+                {
+                    _position = value;
+                    boundingRectangleDirty = true;
+                }
+            }
+        }
         public override float Rotation { get; set; }
         public override Vector2 Origin { get; set; }
         public override Vector2 Center => Position + Origin;
@@ -74,17 +86,27 @@ namespace MonoGame.Extended
             }
         }
 
+        public bool boundingRectangleDirty;
+        RectangleF _boundingRectangle = RectangleF.Empty;
         public override RectangleF BoundingRectangle
         {
             get
             {
-                var frustum = GetBoundingFrustum();
-                var corners = frustum.GetCorners();
-                var topLeft = corners[0];
-                var bottomRight = corners[2];
-                var width = bottomRight.X - topLeft.X;
-                var height = bottomRight.Y - topLeft.Y;
-                return new RectangleF(topLeft.X, topLeft.Y, width, height);
+                if (boundingRectangleDirty)
+                {
+                    var frustum = GetBoundingFrustum();
+                    var corners = frustum.GetCorners();
+                    var topLeft = corners[0];
+                    var bottomRight = corners[2];
+                    var width = bottomRight.X - topLeft.X;
+                    var height = bottomRight.Y - topLeft.Y;
+                    _boundingRectangle.X = topLeft.X;
+                    _boundingRectangle.Y = topLeft.Y;
+                    _boundingRectangle.Width = width;
+                    _boundingRectangle.Height = height;
+                    boundingRectangleDirty = false;
+                }
+                return _boundingRectangle;
             }
         }
         

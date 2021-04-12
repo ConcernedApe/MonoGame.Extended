@@ -483,6 +483,11 @@ namespace MonoGame.Extended
             return Contains(ref this, ref point);
         }
 
+        public bool ContainsRect(RectangleF rect)
+        {
+            return (rect.X >= X && rect.Y >= Y && rect.Right <= Right && rect.Bottom <= Bottom) ;
+        }
+
         /// <summary>
         ///     Updates this <see cref="RectangleF" /> from a list of <see cref="Point2" /> structures.
         /// </summary>
