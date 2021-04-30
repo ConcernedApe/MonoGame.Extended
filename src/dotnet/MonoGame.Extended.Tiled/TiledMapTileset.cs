@@ -34,7 +34,7 @@ namespace MonoGame.Extended.Tiled
         }
 
         public string Name => Texture.Name;
-        public Texture2D Texture { get; }
+        public Texture2D Texture { get; set; }
 
         public TextureRegion2D GetRegion(int column, int row)
         {

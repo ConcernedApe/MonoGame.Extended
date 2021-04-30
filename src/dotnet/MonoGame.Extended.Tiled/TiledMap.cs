@@ -117,7 +117,25 @@ namespace MonoGame.Extended.Tiled
             return null;
         }
 
-		public int GetTilesetFirstGlobalIdentifier(TiledMapTileset tileset)
+        public TiledMapTileset GetTilesetByName(string name)
+        {
+            foreach (var t in Tilesets)
+            {
+                if (t.Name == name) return t;
+            }
+            return null;
+        }
+
+        public TiledMapTileset GetTilesetByNameContains(string nameContains)
+        {
+            foreach (var t in Tilesets)
+            {
+                if (t.Name.Contains(nameContains)) return t;
+            }
+            return null;
+        }
+
+        public int GetTilesetFirstGlobalIdentifier(TiledMapTileset tileset)
 		{
             for (int i = 0; i < _firstGlobalIdentifiers.Count; i++)
             {

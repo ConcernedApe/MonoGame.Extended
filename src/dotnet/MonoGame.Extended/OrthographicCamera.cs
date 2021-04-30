@@ -49,8 +49,9 @@ namespace MonoGame.Extended
             get => _zoom;
             set
             {
-                if ((value < MinimumZoom) || (value > MaximumZoom))
-                    throw new ArgumentException("Zoom must be between MinimumZoom and MaximumZoom");
+                if (value < MinimumZoom) value = MinimumZoom;
+                else if (value > MaximumZoom) value = MaximumZoom;
+                    
 
                 _zoom = value;
             }
