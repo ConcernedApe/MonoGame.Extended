@@ -45,8 +45,8 @@ namespace MonoGame.Extended.Tiled
 
         public int TileWidth { get; }
         public int TileHeight { get; }
-        public int Spacing { get; }
-        public int Margin { get; }
+        public int Spacing { get; set; }
+        public int Margin { get; set; }
         public int TileCount { get; }
         public int Columns { get; }
         public List<TiledMapTilesetTile> Tiles { get; }

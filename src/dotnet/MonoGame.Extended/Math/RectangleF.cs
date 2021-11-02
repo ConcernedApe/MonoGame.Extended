@@ -219,6 +219,11 @@ namespace MonoGame.Extended
             return result;
         }
 
+        public Rectangle ToRectangle()
+        {
+            return new Rectangle((int)X, (int)Y, (int)Width, (int)Height);
+        }
+
         /// <summary>
         ///     Computes the <see cref="RectangleF" /> from the specified <see cref="RectangleF" /> transformed by
         ///     the specified <see cref="Matrix2" />.

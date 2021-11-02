@@ -37,7 +37,7 @@ namespace MonoGame.Extended.TextureAtlases
         }
 
         public string Name { get; }
-        public Texture2D Texture { get; protected set; }
+        public Texture2D Texture { get;  set; }
         public int X { get; }
         public int Y { get; }
         public int Width { get; }
