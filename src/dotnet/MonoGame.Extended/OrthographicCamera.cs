@@ -103,8 +103,8 @@ namespace MonoGame.Extended
                     var height = bottomRight.Y - topLeft.Y;
                     _boundingRectangle.X = topLeft.X;
                     _boundingRectangle.Y = topLeft.Y;
-                    _boundingRectangle.Width = width;
-                    _boundingRectangle.Height = height;
+                    _boundingRectangle.Width = (float)Math.Round(width);
+                    _boundingRectangle.Height = (float)Math.Round(height);
                     boundingRectangleDirty = false;
                 }
                 return _boundingRectangle;
