@@ -17,8 +17,8 @@ namespace MonoGame.Extended.Tiled
 		private readonly List<Tuple<TiledMapTileset, int>> _firstGlobalIdentifiers = new List<Tuple<TiledMapTileset, int>>();
 
         public string Name { get; }
-        public int Width { get; }
-        public int Height { get; }
+        public int Width { get; set; }
+        public int Height { get; set; }
         public int TileWidth { get; }
         public int TileHeight { get; }
         public TiledMapTileDrawOrder RenderOrder { get; }
@@ -63,6 +63,19 @@ namespace MonoGame.Extended.Tiled
 			_firstGlobalIdentifiers.Add(new Tuple<TiledMapTileset, int>(tileset, firstGlobalIdentifier));
         }
 
+        public void RemoveLayer(TiledMapLayer layer)
+        {
+            _layers.Remove(layer);
+        }
+
+        public void clearLayers()
+        {
+            _layers.Clear();
+            _layersByName.Clear();
+            _objectLayers.Clear();
+            _imageLayers.Clear();
+            _tileLayers.Clear();
+        }
 		public void AddLayer(TiledMapLayer layer)
 			=> AddLayer(layer, true);
 
