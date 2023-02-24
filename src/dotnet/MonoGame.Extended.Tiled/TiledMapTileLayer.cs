@@ -43,7 +43,11 @@ namespace MonoGame.Extended.Tiled
         public TiledMapTile GetTile(ushort x, ushort y)
         {
             var index = GetTileIndex(x, y);
-            return Tiles[index];
+            if (index < Tiles.Length)
+            {
+                return Tiles[index];
+            }
+            else return new TiledMapTile();
         }
 
         public void SetTile(ushort x, ushort y, uint globalIdentifier)
