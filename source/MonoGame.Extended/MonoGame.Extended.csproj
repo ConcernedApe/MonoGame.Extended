@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Description>It makes MonoGame more awesome.</Description>
+      <TargetFramework>net8.0</TargetFramework>
+      <Description>It makes MonoGame more awesome.</Description>
         <PackageTags>monogame extended pipeline bmfont tiled texture atlas input viewport fps shapes sprite</PackageTags>
     </PropertyGroup>
 
@@ -31,6 +32,9 @@
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
             <_Parameter1>MonoGame.Extended.Content.Pipeline</_Parameter1>
         </AssemblyAttribute>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.DesktopGL.csproj" />
     </ItemGroup>
 
 </Project>

@@ -21,7 +21,7 @@ public class Texture2DRegion
     /// <summary>
     /// Gets the texture associated with this texture region.
     /// </summary>
-    public Texture2D Texture { get; }
+    public Texture2D Texture { get; set; }
 
     /// <summary>
     /// Gets the top-left x-coordinate of the texture region within the texture.
