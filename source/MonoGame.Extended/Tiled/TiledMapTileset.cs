@@ -61,10 +61,18 @@ namespace MonoGame.Extended.Tiled
 
         public Rectangle GetTileRegion(int localTileIdentifier)
         {
-            return Texture is not null
-                ? TiledMapHelper.GetTileSourceRectangle(localTileIdentifier, TileWidth, TileHeight, Columns, Margin,
-                    Spacing)
-                : Tiles.FirstOrDefault(x => x.LocalTileIdentifier == localTileIdentifier).Texture.Bounds;
+            if (Texture != null)
+            {
+                return TiledMapHelper.GetTileSourceRectangle(localTileIdentifier, TileWidth, TileHeight, Columns, Margin,
+                    Spacing);
+            } else
+            {
+                foreach (var t in Tiles)
+                {
+                    if (t.LocalTileIdentifier == localTileIdentifier) return t.Texture.Bounds;
+                }
+            }
+            return Rectangle.Empty;
         }
     }
 }
