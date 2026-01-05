@@ -62,7 +62,7 @@ namespace MonoGame.Extended.Input.InputListeners
 
                     KeyPressed?.Invoke(this, args);
 
-                    if (args.Character.HasValue)
+                    //if (args.Key.HasValue)
                         KeyTyped?.Invoke(this, args);
 
                     _previousKey = key;

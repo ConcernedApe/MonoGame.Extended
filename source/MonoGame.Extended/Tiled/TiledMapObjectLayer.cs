@@ -15,6 +15,6 @@ namespace MonoGame.Extended.Tiled
 
         public Color? Color { get; }
         public TiledMapObjectDrawOrder DrawOrder { get; }
-        public TiledMapObject[] Objects { get; }
+        public TiledMapObject[] Objects { get; set; }
     }
 }
